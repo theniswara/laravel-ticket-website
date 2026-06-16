@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Sellers\Schemas;
 
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
@@ -12,15 +13,16 @@ class SellerForm
         return $schema
             ->components([
                 TextInput::make('name')
-                    ->required(),
+                    ->required()
+                    ->maxLength(255),
                 TextInput::make('telephone')
                     ->tel()
                     ->required(),
                 TextInput::make('location')
-                    ->required(),
-                TextInput::make('slug')
-                    ->required(),
-                TextInput::make('photo')
+                    ->required()
+                    ->maxLength(255),
+                FileUpload::make('photo')
+                    ->image()
                     ->required(),
             ]);
     }

@@ -7,6 +7,7 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ForceDeleteBulkAction;
 use Filament\Actions\RestoreBulkAction;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
@@ -23,10 +24,8 @@ class SellersTable
                     ->searchable(),
                 TextColumn::make('location')
                     ->searchable(),
-                TextColumn::make('slug')
-                    ->searchable(),
-                TextColumn::make('photo')
-                    ->searchable(),
+                ImageColumn::make('photo')
+                    ->circular(),
                 TextColumn::make('deleted_at')
                     ->dateTime()
                     ->sortable()
